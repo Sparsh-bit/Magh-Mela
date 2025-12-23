@@ -1,0 +1,459 @@
+/* Divine Light Hero */
+.hero-divine {
+    text-align: center;
+    padding-top: 140px;
+    padding-bottom: 80px;
+    background: radial-gradient(circle at top center, #FFF8E1 0%, #FAF9F6 70%);
+    /* Glowing Saffron-Cream */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sanskrit/Decorative Background Text */
+.hero-bg-text {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20vw;
+    font-family: 'Playfair Display', serif;
+    color: rgba(212, 175, 55, 0.03);
+    /* Faint Gold */
+    z-index: 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Celestial Countdown Timer */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.time-box {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    /* Gold Border */
+    padding: 15px 20px;
+    border-radius: 16px;
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.time-box:hover {
+    transform: translateY(-5px);
+    border-color: #FFD54F;
+    box-shadow: 0 15px 40px rgba(255, 160, 0, 0.2);
+}
+
+.time-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #E65100;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #5D4037;
+    margin-top: 5px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+}
+
+/* Responsive Countdown */
+@media (max-width: 600px) {
+    .countdown-container {
+        gap: 10px;
+        margin: 20px auto;
+    }
+
+    .time-box {
+        padding: 10px;
+        min-width: 60px;
+    }
+
+    .time-value {
+        font-size: 1.5rem;
+    }
+
+    .time-label {
+        font-size: 0.6rem;
+    }
+}
+
+
+.hero-header-light {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+}
+
+.hero-pill-light {
+    background: rgba(255, 153, 51, 0.1);
+    color: #E65100;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 153, 51, 0.2);
+}
+
+.hero-headline-light {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    color: #4E342E;
+    /* Deep Earth Brown */
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero-headline-light em {
+    color: #FF6D00;
+    /* Deep Saffron */
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.hero-subhead-light {
+    font-family: 'Outfit', sans-serif;
+    color: #6D4C41;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* Divine Image Grid (Golden Frames) */
+.hero-grid-light {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.hero-card-light {
+    border-radius: 200px 200px 20px 20px;
+    /* Temple Arch Shape */
+    overflow: hidden;
+    height: 500px;
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(78, 52, 46, 0.1);
+    transition: all 0.5s ease;
+    border: 4px solid white;
+}
+
+.hero-card-light.center {
+    height: 550px;
+    /* Center card taller */
+    transform: translateY(-25px);
+    border: 4px solid #FFD54F;
+    /* Gold Border */
+    box-shadow: 0 30px 80px rgba(255, 112, 67, 0.25);
+    z-index: 2;
+}
+
+.hero-card-light img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.hero-card-light:hover img {
+    transform: scale(1.1);
+}
+
+.card-overlay-light {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(78, 52, 46, 0.9), transparent);
+    padding: 40px 20px 20px;
+    color: white;
+    text-align: left;
+}
+
+.card-overlay-light h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    /* Unified larger size */
+    margin-bottom: 8px;
+    color: #FFD54F;
+    /* Unified Golden Color */
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1024px) {
+    .hero-grid-light {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hero-card-light,
+    .hero-card-light.center {
+        width: 100%;
+        height: 400px;
+        transform: none;
+        border-radius: 24px;
+    }
+}
+
+/* Traffic Toggle Pill */
+.traffic-toggle-pill {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: #E65100;
+    cursor: pointer;
+    z-index: 1000;
+    border: 1px solid #FFE0B2;
+}
+
+.pulse-dot-small {
+    width: 8px;
+    height: 8px;
+    background: #FF3D00;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.gps-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #8D6E63;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 2;
+    padding: 5px;
+}
+
+/* GPS/Time-Saver Widget - Updated for Docking */
+.gps-floating-card {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 24px;
+    width: 300px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Outfit', sans-serif;
+    text-align: left;
+    transform-origin: bottom right;
+}
+
+@media (max-width: 600px) {
+    .traffic-toggle-pill {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .gps-floating-card {
+        bottom: 20px;
+        right: 20px;
+        width: 90%;
+        /* Responsive adjustment */
+        max-width: 320px;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.gps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: #8D6E63;
+    font-weight: 600;
+}
+
+.live-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #E65100;
+    background: #FFF3E0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(230, 81, 0, 0.1);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #E65100;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 1;
+    }
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.transport-mode {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5D4037;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.time-val {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.time-val.slow {
+    color: #B71C1C;
+    text-decoration: line-through;
+    opacity: 0.6;
+    font-size: 0.9rem;
+}
+
+.time-val.fast {
+    color: #2E7D32;
+    font-size: 1.2rem;
+}
+
+/* Updated Widget Elements */
+.route-selector {
+    display: flex;
+    align-items: center;
+    background: #FFF3E0;
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #FFE0B2;
+}
+
+.route-icon {
+    font-size: 0.85rem;
+    color: #E65100;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.ghat-dropdown {
+    border: none;
+    background: transparent;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: #3E2723;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.save-tag {
+    display: inline-block;
+    background: #2E7D32;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.dist-tag {
+    font-size: 0.75rem;
+    text-align: center;
+    color: #9E9E9E;
+    margin-top: 15px;
+    border-top: 1px dashed #EEE;
+    padding-top: 8px;
+}
+
+@media (max-width: 1024px) {
+    .gps-floating-card {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 320px;
+        margin: 40px auto 0;
+        animation: none;
+        backdrop-filter: none;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}

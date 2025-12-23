@@ -1,0 +1,145 @@
+/* Spiritual Significance - Unique Section */
+.spiritual-significance-section {
+    background: linear-gradient(to bottom, #FAF9F6, #FFF3E0);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative Background Mandala Effect (CSS only) */
+.spiritual-significance-section::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 179, 0, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+    animation: spinSlow 60s linear infinite;
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.significance-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.significance-header h2 {
+    font-size: 3rem;
+    color: #E65100;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 16px;
+}
+
+.significance-header p {
+    font-family: 'Outfit', sans-serif;
+    color: #6D4C41;
+    font-size: 1.2rem;
+}
+
+/* Timeline/Calendar Cards */
+.dates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.date-card {
+    background: white;
+    border-left: 4px solid #FF9800;
+    padding: 30px;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.date-card:hover {
+    transform: translateX(10px);
+    background: #FFF8E1;
+}
+
+.date-card.highlight {
+    background: linear-gradient(135deg, #E65100, #EF6C00);
+    border-left: 4px solid #FFD54F;
+    color: white;
+}
+
+.date-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.date-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: #3E2723;
+}
+
+.date-card.highlight .date-display {
+    color: white;
+}
+
+.snan-tag {
+    background: #FFF3E0;
+    color: #E65100;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.date-card.highlight .snan-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.snan-desc {
+    color: #5D4037;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.date-card.highlight .snan-desc {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Quote Box */
+.quote-box {
+    margin-top: 80px;
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: #3E2723;
+    max-width: 800px;
+    margin: 0 auto;
+}

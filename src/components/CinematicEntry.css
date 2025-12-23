@@ -1,0 +1,108 @@
+/* Compact & Smooth Cinematic */
+.cinematic-wrapper-compact {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #FFFAF0;
+    /* Warm White */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    font-family: 'Outfit', sans-serif;
+}
+
+.compact-stage {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+    /* Constrained width */
+}
+
+.traffic-compact {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    opacity: 0.6;
+    filter: grayscale(1);
+}
+
+.icon-sm {
+    font-size: 2rem;
+}
+
+.sub-text-sm {
+    font-size: 0.8rem;
+    color: #9E9E9E;
+    font-weight: 500;
+}
+
+.bike-compact {
+    position: absolute;
+    /* Overlap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-lg {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 8px rgba(230, 81, 0, 0.3));
+    transform: scaleX(-1);
+}
+
+.text-compact-container {
+    height: 60px;
+    /* Fixed height to prevent layout jumps */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.text-problem {
+    font-size: 1.2rem;
+    color: #5D4037;
+    font-weight: 500;
+    margin: 0;
+}
+
+.text-action {
+    font-size: 2rem;
+    color: #E65100;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.text-solution {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #3E2723;
+    font-weight: 700;
+}
+
+.badge-time {
+    background: #E65100;
+    color: white;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}

@@ -1,0 +1,326 @@
+/* ============================================
+   MAGH MELA - PROFESSIONAL DESIGN SYSTEM
+   Figma-Quality Design Tokens & Components
+   ============================================ */
+
+/* ========== COLOR SYSTEM ========== */
+:root {
+    /* Primary Palette - Spiritual Energy */
+    --saffron-orange: #F57C00;
+    --sacred-yellow: #FBC02D;
+    --vibrant-orange: #FB8C00;
+
+    /* Secondary Palette - Balance & Calm */
+    --river-blue: #1E88E5;
+    --deep-indigo: #1A237E;
+
+    /* Neutral Palette - Readability */
+    --ivory-white: #FFF8E1;
+    --pure-white: #FFFFFF;
+    --charcoal-black: #212121;
+    --soft-grey: #757575;
+    --light-grey: #E0E0E0;
+    --background: #FAFAFA;
+
+    /* Semantic Colors */
+    --success: #4CAF50;
+    --warning: #FF9800;
+    --error: #F44336;
+    --info: #2196F3;
+
+    /* ========== GRADIENTS ========== */
+    --gradient-primary: linear-gradient(135deg, #FBC02D 0%, #F57C00 50%, #FB8C00 100%);
+    --gradient-spiritual: linear-gradient(135deg, #FBC02D 0%, #F57C00 100%);
+    --gradient-hero: linear-gradient(135deg,
+            rgba(251, 192, 45, 0.85) 0%,
+            rgba(245, 124, 0, 0.9) 50%,
+            rgba(251, 140, 0, 0.88) 100%);
+    --gradient-river: linear-gradient(135deg, #1E88E5 0%, #1A237E 100%);
+    --gradient-glass: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.1) 100%);
+
+    /* ========== SPACING SCALE ========== */
+    --space-1: 0.25rem;
+    /* 4px */
+    --space-2: 0.5rem;
+    /* 8px */
+    --space-3: 0.75rem;
+    /* 12px */
+    --space-4: 1rem;
+    /* 16px */
+    --space-5: 1.5rem;
+    /* 24px */
+    --space-6: 2rem;
+    /* 32px */
+    --space-7: 3rem;
+    /* 48px */
+    --space-8: 4rem;
+    /* 64px */
+    --space-9: 6rem;
+    /* 96px */
+    --space-10: 8rem;
+    /* 128px */
+
+    /* ========== TYPOGRAPHY SCALE ========== */
+    --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Font Sizes */
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-lg: 1.125rem;
+    /* 18px */
+    --text-xl: 1.25rem;
+    /* 20px */
+    --text-2xl: 1.5rem;
+    /* 24px */
+    --text-3xl: 1.875rem;
+    /* 30px */
+    --text-4xl: 2.25rem;
+    /* 36px */
+    --text-5xl: 3rem;
+    /* 48px */
+    --text-6xl: 4rem;
+    /* 64px */
+
+    /* Font Weights */
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+    /* Line Heights */
+    --leading-tight: 1.2;
+    --leading-snug: 1.4;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.8;
+    --leading-loose: 2;
+
+    /* ========== BORDER RADIUS ========== */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+    --radius-full: 9999px;
+
+    /* ========== SHADOWS ========== */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.20);
+    --shadow-2xl: 0 24px 64px rgba(0, 0, 0, 0.24);
+
+    /* Colored Shadows */
+    --shadow-saffron: 0 8px 30px rgba(245, 124, 0, 0.25);
+    --shadow-yellow: 0 8px 30px rgba(251, 192, 45, 0.25);
+    --shadow-blue: 0 8px 30px rgba(30, 136, 229, 0.25);
+
+    /* ========== Z-INDEX SCALE ========== */
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1100;
+    --z-fixed: 1200;
+    --z-modal-backdrop: 1300;
+    --z-modal: 1400;
+    --z-popover: 1500;
+    --z-tooltip: 1600;
+
+    /* ========== TRANSITIONS ========== */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* ========== BREAKPOINTS (for JS) ========== */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+/* ========== COMPONENT: BUTTONS ========== */
+.btn {
+    /* Base Styles */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-full);
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Button Variants */
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-saffron);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl), var(--shadow-saffron);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--saffron-orange);
+    border: 2px solid var(--saffron-orange);
+}
+
+.btn-secondary:hover {
+    background: rgba(245, 124, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-white {
+    background: white;
+    color: var(--saffron-orange);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Button Sizes */
+.btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+}
+
+.btn-lg {
+    padding: var(--space-5) var(--space-7);
+    font-size: var(--text-lg);
+}
+
+/* ========== COMPONENT: CARDS ========== */
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Glass Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ========== COMPONENT: INPUTS ========== */
+.input {
+    width: 100%;
+    padding: var(--space-4);
+    border: 2px solid var(--light-grey);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--charcoal-black);
+    background: white;
+    transition: all var(--transition-base);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--saffron-orange);
+    box-shadow: 0 0 0 4px rgba(245, 124, 0, 0.1);
+}
+
+.input::placeholder {
+    color: var(--soft-grey);
+}
+
+/* ========== COMPONENT: BADGE ========== */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(245, 124, 0, 0.1);
+    border: 2px solid var(--saffron-orange);
+    color: var(--saffron-orange);
+}
+
+/* ========== UTILITY CLASSES ========== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.section {
+    padding: var(--space-9) var(--space-4);
+}
+
+.gradient-text {
+    background: var(--gradient-spiritual);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 768px) {
+    :root {
+        --text-5xl: 2.5rem;
+        --text-6xl: 3rem;
+    }
+
+    .btn {
+        width: 100%;
+        min-height: 56px;
+        /* Touch-friendly */
+    }
+
+    .section {
+        padding: var(--space-7) var(--space-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--space-3);
+    }
+}

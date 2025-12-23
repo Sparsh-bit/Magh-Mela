@@ -1,0 +1,162 @@
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.custom-select-label {
+    display: block;
+    font-weight: 600;
+    color: #5D4037;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.custom-select-trigger {
+    background: #FAFAFA;
+    border: 2px solid #EEE;
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+    z-index: 2;
+    /* Ensure trigger stays clickable */
+}
+
+.custom-select-trigger.open {
+    border-color: #FFB74D;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 183, 77, 0.1);
+}
+
+.select-value-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-icon {
+    font-size: 1.1rem;
+}
+
+.select-value-text {
+    font-size: 1rem;
+    color: #3E2723;
+    font-weight: 500;
+}
+
+.arrow-icon {
+    font-size: 0.7rem;
+    color: #8D6E63;
+}
+
+/* Options List */
+.custom-options-list {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: white;
+    /* Glassmorphism for list only if desired, but solid is better for readability */
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border: 2px solid #FFE0B2;
+    /* Stronger border for box shape */
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(50, 20, 0, 0.15);
+    /* Premium shadow */
+
+    z-index: 100;
+    padding: 6px;
+    max-height: 250px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    /* Prevents page scroll */
+}
+
+.custom-option {
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #5D4037;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.custom-option.selected {
+    background: #FFF3E0;
+    color: #E65100;
+    font-weight: 600;
+}
+
+.check-mark {
+    font-size: 0.8rem;
+    color: #E65100;
+}
+
+/* Scrollbar Styling for list */
+.custom-options-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-options-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-options-list::-webkit-scrollbar-thumb {
+    background: #FFE0B2;
+    border-radius: 10px;
+}
+
+/* Compact Variant for Traffic Widget */
+.custom-select-container.compact {
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.custom-select-container.compact .custom-select-trigger {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.5);
+    /* Slightly transparent */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: auto;
+    gap: 5px;
+}
+
+.custom-select-container.compact .custom-select-trigger.open {
+    background: #FFF;
+}
+
+.custom-select-container.compact .select-value-text {
+    font-size: 0.9rem;
+    /* Smaller font */
+    line-height: 1.2;
+}
+
+.custom-select-container.compact .arrow-icon {
+    font-size: 0.6rem;
+}
+
+.custom-select-container.compact .custom-options-list {
+    min-width: 140px;
+    /* Force width for dropdown */
+    padding: 4px;
+    top: calc(100% + 2px);
+    border-radius: 8px;
+}
+
+.custom-select-container.compact .custom-option {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
