@@ -6,6 +6,8 @@ import CustomSelect from './CustomSelect';
 import CustomDatePicker from './CustomDatePicker';
 
 const BookingSection = () => {
+    // API base: set VITE_API_URL=http://localhost:4000 in project root for dev
+    const API_BASE = import.meta.env.VITE_API_URL || '';
     const [passengers, setPassengers] = useState(1);
     const [kit, setKit] = useState(true);
 
@@ -23,6 +25,10 @@ const BookingSection = () => {
     // Processing & Ticket State
     const [isProcessing, setIsProcessing] = useState(false);
     const [showTicket, setShowTicket] = useState(false);
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+    const [bookingInProgressId, setBookingInProgressId] = useState(null);
+    const [confirmedBooking, setConfirmedBooking] = useState(null);
 
     const wrapperRef = useRef(null);
 
@@ -112,12 +118,108 @@ const BookingSection = () => {
         );
     };
 
-    const handleBooking = () => {
+    const loadRazorpayScript = () => new Promise((resolve, reject) => {
+        if (window.Razorpay) return resolve(window.Razorpay);
+        const s = document.createElement('script');
+        s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        s.onload = () => resolve(window.Razorpay);
+        s.onerror = () => reject(new Error('Failed to load Razorpay SDK'));
+        document.body.appendChild(s);
+    });
+
+    const pollBookingStatus = async (id, attempts = 15, interval = 2000) => {
+        for (let i = 0; i < attempts; i++) {
+            try {
+                const res = await fetch(`${API_BASE}/api/bookings/${id}`);
+                if (!res.ok) throw new Error('failed');
+                const data = await res.json();
+                const booking = data.booking;
+                if (booking && booking.status === 'confirmed') {
+                    return booking;
+                }
+            } catch (e) {
+                // ignore and retry
+            }
+            await new Promise(r => setTimeout(r, interval));
+        }
+        return null;
+    };
+
+    const handleBooking = async () => {
+        // Basic client-side validation
+        setEmailError('');
+        if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+            setEmailError('Please enter a valid email');
+            return;
+        }
+        if (!location) {
+            alert('Please enter a pickup location');
+            return;
+        }
+
         setIsProcessing(true);
-        setTimeout(() => {
+
+        try {
+            const payload = {
+                pickupLocation: { text: location },
+                destinationGhat,
+                timeSlot,
+                date: bookingDate,
+                passengers,
+                hygieneKit: kit,
+                email
+            };
+
+            const resp = await fetch(`${API_BASE}/api/bookings`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!resp.ok) {
+                const err = await resp.json().catch(() => ({}));
+                throw new Error(err.error || 'Booking creation failed');
+            }
+
+            const body = await resp.json();
+            const { bookingId, order, razorpayKey } = body;
+            setBookingInProgressId(bookingId);
+
+            // Load Razorpay
+            await loadRazorpayScript();
+
+            const options = {
+                key: razorpayKey,
+                amount: order.amount,
+                currency: order.currency || 'INR',
+                name: 'MaghMela Express',
+                description: `${passengers} Pilgrim(s)`,
+                order_id: order.id,
+                modal: { esc: false },
+                handler: async function (response) {
+                    // client side handler; final confirmation happens via webhook
+                    // start polling booking status
+                    const booking = await pollBookingStatus(bookingId);
+                    if (booking) {
+                        setConfirmedBooking(booking);
+                        setShowTicket(true);
+                    } else {
+                        alert('Payment received but confirmation pending. Refresh admin portal in a moment.');
+                    }
+                    setIsProcessing(false);
+                },
+                prefill: { email },
+                theme: { color: '#FF6F00' }
+            };
+
+            const rz = new window.Razorpay(options);
+            rz.open();
+
+        } catch (err) {
+            console.error(err);
+            alert(err.message || 'Booking failed');
             setIsProcessing(false);
-            setShowTicket(true);
-        }, 3000);
+        }
     };
 
     const closeTicket = () => {
@@ -161,29 +263,29 @@ const BookingSection = () => {
                                 <div className="ticket-header">
                                     <span className="om-symbol-small">🕉️</span>
                                     <h3>MaghMela Express</h3>
-                                    <span className="ticket-id">#MME-{Math.floor(Math.random() * 9000) + 1000}</span>
+                                    <span className="ticket-id">{confirmedBooking ? `#MME-${String(confirmedBooking._id).slice(-6)}` : `#MME-${Math.floor(Math.random() * 9000) + 1000}`}</span>
                                 </div>
                                 <div className="ticket-body">
                                     <div className="ticket-row">
                                         <label>Pickup</label>
-                                        <p>{location || "Civil Lines (Default)"}</p>
+                                        <p>{(confirmedBooking && confirmedBooking.pickupLocation && confirmedBooking.pickupLocation.text) || location || "Civil Lines (Default)"}</p>
                                     </div>
                                     <div className="ticket-row">
                                         <label>Destination</label>
-                                        <p className="highlight">{destinationGhat}</p>
+                                        <p className="highlight">{(confirmedBooking && confirmedBooking.destinationGhat) || destinationGhat}</p>
                                     </div>
                                     <div className="ticket-grid">
                                         <div>
                                             <label>Date</label>
-                                            <p>{new Date(bookingDate).toLocaleDateString('en-GB')}</p>
+                                            <p>{new Date((confirmedBooking && confirmedBooking.date) || bookingDate).toLocaleDateString('en-GB')}</p>
                                         </div>
                                         <div>
                                             <label>Passengers</label>
-                                            <p>{passengers} Pilgrims</p>
+                                            <p>{(confirmedBooking && confirmedBooking.passengers) || passengers} Pilgrims</p>
                                         </div>
                                     </div>
                                     <div className="qr-box">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=MaghMelaExpressConfirmed" alt="QR Code" />
+                                        <img src={`https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${(confirmedBooking && confirmedBooking.qrCodeData) || 'MaghMelaExpressPending'}`} alt="QR Code" />
                                         <span>Scan at Boarding Point</span>
                                     </div>
                                 </div>
@@ -282,6 +384,19 @@ const BookingSection = () => {
                                     icon="🕒"
                                 />
                             </div>
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label">Contact Email</label>
+                            <input
+                                type="email"
+                                className="form-input"
+                                placeholder="you@example.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                aria-invalid={!!emailError}
+                            />
+                            {emailError && <div style={{ color: '#c62828', fontSize: '0.9rem', marginTop: '6px' }}>{emailError}</div>}
                         </div>
 
                         <div className="form-group">

@@ -7,6 +7,15 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: true, // Fail if port 5173 is already in use
-    host: true
+    host: true,
+    // Proxy API calls to backend to avoid CORS and make `/api` requests transparent
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path
+      }
+    }
   }
 })
