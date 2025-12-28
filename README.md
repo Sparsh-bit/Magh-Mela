@@ -1,89 +1,55 @@
 # MaghMela Express 🚲🙏
 
-A premium, spiritually themed landing page and booking platform for the Magh Mela 2025 event in Prayagraj. Designed with a "Divine Light" aesthetic to resonate with pilgrims while providing industry-level utility.
+MaghMela Express is a premium, high-performance landing page and booking platform tailored for the **Magh Mela 2025** event in Prayagraj. It combines spiritual aesthetics with modern technology to provide seamless transport and pilgrimage support.
 
-## ✨ Key Features
+## 🚀 Professional Deployment (Cloudflare Pages)
 
-### 🎨 **Divine Light Theme**
-- **Aesthetic**: Warm Creams, Saffron Oranges, and Deep Earthy Browns (`#FAF9F6`, `#E65100`, `#3E2723`).
-- **Typography**: Premium typography using **Playfair Display** (Headings) and **Outfit** (Body).
-- **Visuals**: High-quality imagery featuring the Kumbh/Magh Mela atmosphere, contained in elegant arched frames to prevent pixelation.
+This project is optimized for deployment on **Cloudflare Pages**. 
 
-### 🛐 **Spiritual Significance Section**
-- **Dynamic Calendar**: Highlights key bathing dates (Paush Purnima, Mauni Amavasya, etc.).
-- **Cultural Context**: Educational content about the significance of the Kalpwas.
+### Automated Deployment (Recommended)
+A GitHub Action is configured in `.github/workflows/deploy.yml`. To enable it:
+1. Add `CLOUDFLARE_API_TOKEN` to your GitHub Repository Secrets.
+2. Add `CLOUDFLARE_ACCOUNT_ID` to your GitHub Repository Secrets.
+3. Every push to `frontend-only` or `main` will automatically build and deploy the app.
 
-### ⚡ **Smart Booking Engine**
-- **Location Intelligence**: 
-  - **Autocomplete**: "Google Maps" style suggestions for Prayagraj landmarks (e.g., Civil Lines, Sangam).
-  - **GPS Integration**: "Use Current Location" feature for instant pickup detection.
-- **Interactive Form**:
-  - Real-time price calculation (Ride + Hygiene Kit options).
-  - Overlay logic for dropdowns to ensure no UI overlapping.
-- **Trust Signals**: Badges for "Instant Confirmation" and "100% Refundable".
+### Manual Configuration (Dashboard)
+If using the Cloudflare Dashboard's Git Integration, ensure the following settings are applied to avoid "Next.js" detection errors:
+- **Framework Preset**: `Vite` (Crucial: Do not leave as Next.js)
+- **Build Command**: `npm run build`
+- **Build Output Directory**: `dist`
+- **Node.js Version**: 18+
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack & Architecture
 
-- **Framework**: React 18
-- **Build Tool**: Vite
-- **Styling**: Vanilla CSS (CSS3 variables, Grid, Flexbox, Glassmorphism)
-- **Deployment**: Ready for Netlify/Vercel
+- **Frontend**: React 19 + Vite 7
+- **UI/UX**: Vanilla CSS + Framer Motion (Optimized for 60fps)
+- **3D Elements**: React Three Fiber / Three.js
+- **State Management**: React Hooks + React Hook Form
+- **Deployment**: Cloudflare Pages CI/CD
 
 ## 📂 Project Structure
 
-```
-MaghaMela/
-├── src/
-│   ├── components/
-│   │   ├── HeroSection.jsx          # "Divine Arch" Hero with Aarti imagery
-│   │   ├── HeroSection.css
-│   │   ├── HowItWorks.jsx           # "Path to Peace" process steps
-│   │   ├── HowItWorks.css
-│   │   ├── WhyBike.jsx              # Benefits Grid (Divine Speed, Verfied Sewaks)
-│   │   ├── WhyBike.css
-│   │   ├── BookingSection.jsx       # Advanced form with Autocomplete/GPS
-│   │   ├── BookingSection.css
-│   │   ├── SpiritualSignificance.jsx# "Merit of Magha" Calendar (Footer area)
-│   │   └── SpiritualSignificance.css
-│   ├── App.jsx                      # Main Layout & Navigation
-│   ├── index.css                    # Global Design System (Fonts: Playfair/Outfit)
-│   └── main.jsx
-├── public/                          # Optimized Assets (magh-mela-aarti.jpg etc.)
-└── index.html
+- `src/components/`: Modular, reusable UI components.
+- `src/design-system.css`: Core design tokens and global styles.
+- `public/`: Assets and Cloudflare configuration files (`_redirects`).
+- `.github/workflows/`: Professional CI/CD pipelines.
+
+## 👨‍💻 Development
+
+### Setup
+```bash
+npm install
 ```
 
-## 🚀 Getting Started
+### Dev Server
+```bash
+npm run dev
+```
 
-1.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
-
-2.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
-
-3.  **Build for Production**
-    ```bash
-    npm run build
-    ```
-
-## 🌐 Deployment (Cloudflare Pages)
-
-To deploy this project to Cloudflare Pages, use the following settings in the Cloudflare Dashboard:
-
-1.  **Framework Preset**: Select **Vite** (or **None**).
-2.  **Build command**: `npm run build`
-3.  **Build output directory**: `dist`
-4.  **Environment Variables**: Ensure `NODE_VERSION` is set to `18` or higher if the build fails due to Node version.
-
-
-## 👨‍💻 Design & Development Notes
-
-- **Clean Codebase**: All unused assets (3D models, legacy images) and components (RefundPolicy, KitInclusion) have been removed for performance.
-- **Responsive Layout**: Utilizing CSS Grid and Flexbox with a mobile-first approach.
-- **Global Box-Sizing**: `box-sizing: border-box` applied globally to prevent layout overlapping issues.
+### Build
+```bash
+npm run build
+```
 
 ---
 **Om Namah Shivay** 🕉️
