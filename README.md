@@ -69,6 +69,16 @@ MaghaMela/
     npm run build
     ```
 
+## 🌐 Deployment (Cloudflare Pages)
+
+To deploy this project to Cloudflare Pages, use the following settings in the Cloudflare Dashboard:
+
+1.  **Framework Preset**: Select **Vite** (or **None**).
+2.  **Build command**: `npm run build`
+3.  **Build output directory**: `dist`
+4.  **Environment Variables**: Ensure `NODE_VERSION` is set to `18` or higher if the build fails due to Node version.
+
+
 ## 👨‍💻 Design & Development Notes
 
 - **Clean Codebase**: All unused assets (3D models, legacy images) and components (RefundPolicy, KitInclusion) have been removed for performance.
