@@ -1,4 +1,6 @@
 # MaghMela Express 🚲🙏
+> Last deployed: 2025-12-28 21:51 IST
+
 
 MaghMela Express is a premium, high-performance landing page and booking platform tailored for the **Magh Mela 2025** event in Prayagraj. It combines spiritual aesthetics with modern technology to provide seamless transport and pilgrimage support.
 
